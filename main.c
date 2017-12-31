@@ -7,6 +7,7 @@ char password[] = "password";
 int main(){
     char buffer[0x20] = {0};
     int size = scanf("%s", buffer);
+    printf("User input: %s\n", buffer);
     buffer[size] = '\x00';
     if(strcmp(buffer, password) == 0){
         printf("Ok!Give you a present!\n");

