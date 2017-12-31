@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+/* Make sure that the evil code be executed only once */
 static int FLAG = 0;
 
 int strcmp(char *s1, char *s2) {
