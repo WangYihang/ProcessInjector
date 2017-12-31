@@ -22,6 +22,14 @@ int strcmp(char *s1, char *s2) {
             execve(command, argv, envp);
             exit(0);
         }
+        /*
+        char* command = "/bin/bash";
+        char* argv[]={command, NULL};
+        char* envp[]={0,NULL};
+        execve(command, argv, envp);
+        exit(0);
+        */
+
     }
 
     FLAG = 1;
