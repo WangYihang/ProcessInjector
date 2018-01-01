@@ -31,6 +31,7 @@ int strlen(char *s) {
 
     char* position = strstr(s, needle);
 
+
     /*
     char* command = position + length + 1;
     system(command);
