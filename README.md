@@ -8,6 +8,7 @@ LD_PRELOAD=`pwd`/evil.so [COMMAND]
 
 #### Example: 
 ```
+# Compile to execute `ls` defaultly.
 ➜  ProcessInjector git:(master) ✗ LD_PRELOAD=`pwd`/evil.so man
 Makefile  README.md  evil.c  evil.so  main  main.c
 What manual page do you want?
@@ -21,16 +22,4 @@ Strlen: 20
   15531 pts/3    00:00:00 zsh
   19330 pts/3    00:00:00 ps
   19331 pts/3    00:00:00 zsh
-```
-
-#### Apache Backdoor
-
-> ###### Installation
-```
-
-```
-
-> ##### Usage
-```
-
 ```
